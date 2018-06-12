@@ -1,5 +1,5 @@
 function startup()
-    % Benötigte Klassen zum statischen Klassenpfad hinzufügen
+    %
     % add extern libraries
     addpath('C:\Users\rudi\Documents\GitHub\jsonlab');
     addpath('C:\Users\rudi\Documents\GitHub\BaSampleApp\extLib');
@@ -14,6 +14,8 @@ function startup()
     addpath('C:\Users\rudi\Documents\GitHub\BaSampleApp\scenes\plot');
     addpath('C:\Users\rudi\Documents\GitHub\BaSampleApp\model');
     addpath('C:\Users\rudi\Documents\GitHub\BaSampleApp\model\person');
+    
+    %==========================================================================
     
     model = Model();
     

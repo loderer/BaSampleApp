@@ -1,0 +1,24 @@
+#root {
+	-fx-background-color: #63666a;
+}
+
+.button {
+	-fx-text-fill: #ed8b00;
+	-fx-border-color: #ed8b00;
+	-fx-background-color: #63666a;
+}
+
+#list {
+	-fx-text-fill: #ed8b00;
+	-fx-border-color: #ed8b00;
+	-fx-background-color: #63666a;
+}
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: #ed8b00;
+    -fx-text-fill: white;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #ffd27f;
+}

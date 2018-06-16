@@ -105,12 +105,12 @@ classdef DetailController < JFXSceneController
                     || ~strcmp(newItem.surname, obj.person{1}.surname)...
                     || ~strcmp(newItem.gender, obj.person{1}.gender)...
                     || newItem.age ~= obj.person{1}.age)
-                isCloseable = 0; 
+                isCloseable = false; 
                 dialogStageController = JFXStageController('Unsaved changes!', obj.getJfxApp(), obj.stageController);
                 dialogSceneController = DialogController(strcat(Config.root, '\scenes\dialog\dialog.fxml'), obj);
-                dialogStageController.showScene(dialogSceneController, 400, 146);
+                dialogStageController.showScene(dialogSceneController);
             else 
-                isCloseable = 1;
+                isCloseable = true;
             end
         end
    end

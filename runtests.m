@@ -1,4 +1,4 @@
-function startup()
+function runtests()
     %
     % add extern libraries
     addpath('C:\Users\rudi\Documents\GitHub\jsonlab');
@@ -11,6 +11,8 @@ function startup()
     javaaddpathstatic(['C:\Users\rudi\Documents\GitHub\BaJavaFx\out\artifacts\jfx4matlab_jar\jfx4matlab.jar']);
     % add source folders
     addpath('C:\Users\rudi\Documents\GitHub\BaSampleApp\scenes\detail');
+    addpath('C:\Users\rudi\Documents\GitHub\BaSampleApp\scenes\detail\test');
+    addpath('C:\Users\rudi\Documents\GitHub\BaSampleApp\scenes\detail\test\mock');
     addpath('C:\Users\rudi\Documents\GitHub\BaSampleApp\scenes\dialog');
     addpath('C:\Users\rudi\Documents\GitHub\BaSampleApp\scenes\overview');
     addpath('C:\Users\rudi\Documents\GitHub\BaSampleApp\scenes\overviewList');
@@ -20,9 +22,5 @@ function startup()
     
     %==========================================================================
     
-    model = Model();
-    
-    jfxApplicationAdapter = JFXApplicationAdapter('jfx_4_matlab.JFXApplication');
-    overviewStageController = JFXStageController('Phone book', jfxApplicationAdapter);
-    overviewSceneController = OverviewController(strcat(Config.root, '\scenes\overview\overview.fxml'), model);
-    overviewStageController.showScene(overviewSceneController);
+    detailTest = DetailTest(); 
+    detailTest.run

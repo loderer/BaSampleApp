@@ -69,7 +69,7 @@ classdef OverviewController < JFXSceneController
         function btnNewEntryPressed(obj)
             detailStageController = JFXStageController('Detail', obj.getJfxApp());
             detailSceneController = DetailController(strcat(Config.root, '\scenes\detail\detail.fxml'), obj.model, obj);
-            detailStageController.showScene(detailSceneController, 400, 400);
+            detailStageController.showScene(detailSceneController);
         end
         
         function btn_editEntryPressed(obj)
@@ -80,7 +80,7 @@ classdef OverviewController < JFXSceneController
             
                 detailStageController = JFXStageController('Detail', obj.getJfxApp());
                 detailSceneController = DetailController(strcat(Config.root, '\scenes\detail\detail.fxml'), obj.model, obj, person);
-                detailStageController.showScene(detailSceneController, 400, 400);
+                detailStageController.showScene(detailSceneController);
             else
                 disp('Select item!!!');
             end
@@ -92,12 +92,12 @@ classdef OverviewController < JFXSceneController
         
         function btn_switchToListPressed(obj)
             overviewListController = OverviewListController(strcat(Config.root, '\scenes\overviewList\overviewList.fxml'), obj.model);
-            obj.stageController.showScene(overviewListController, 800, 500);
+            obj.stageController.showScene(overviewListController);
         end
         
         function btn_switchToPlotPressed(obj)
             plotController = PlotController(strcat(Config.root, '\scenes\plot\plot.fxml'), obj.model);
-            obj.stageController.showScene(plotController, 800, 500);
+            obj.stageController.showScene(plotController);
         end
         
         function update(obj, oldItem, newItem) 

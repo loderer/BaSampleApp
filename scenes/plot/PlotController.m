@@ -50,12 +50,12 @@ classdef PlotController < JFXSceneController
             if(strcmp(e.fxId, 'btn_switchToTable')...
                     && strcmp(e.action, 'ACTION'))
                 overviewController = OverviewController(strcat(Config.root, '\scenes\overview\overview.fxml'), obj.model);
-                obj.stageController.showScene(overviewController, 800, 500);
+                obj.stageController.showScene(overviewController);
                 eventConsumed = 1; 
             elseif(strcmp(e.fxId, 'btn_switchToList')...
                     && strcmp(e.action, 'ACTION'))
                 overviewListController = OverviewListController(strcat(Config.root, '\scenes\overviewList\overviewList.fxml'), obj.model);
-                obj.stageController.showScene(overviewListController, 800, 500);
+                obj.stageController.showScene(overviewListController);
                 eventConsumed = 1; 
             elseif(strcmp(e.fxId, 'btn_apply')...
                 && strcmp(e.action, 'ACTION'))

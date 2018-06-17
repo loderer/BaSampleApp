@@ -10,39 +10,40 @@ classdef Model < handle
     methods
         function obj = Model()
             obj.id = 0; 
-            obj.person = []; 
+            obj.person = List();  
             obj.readJson();
         end
         
         function addPerson(obj, person) 
             person.setId(obj.id);
-            position = size(obj.person, 2) + 1;
-            obj.person{position} = person;
+            obj.person.add(person);
             obj.id = obj.id + 1;
         end
         
         function updatePerson(obj, person) 
-            for i=1:size(obj.person, 2)
-                if(obj.person{i}.id == person.id)
+            for i=1:obj.person.size()
+                if(obj.person.get(i).id == person.id)
                     break;
                 end
             end
-            obj.person{i} = person;
+            obj.person.set(i, person);
         end
         
         function writeJson(obj) 
-            jsonStr = savejson('', obj);
-            fid = fopen(strcat(Config.root, '\persistentModel.json'), 'w');
+            jsonStr = mls.internal.toJSON(obj);
+            fid = fopen(strcat(Config.rootPath, '\persistentModel.json'), 'w');
             if fid == -1, error('Cannot create JSON file'); end
             fwrite(fid, jsonStr, 'char');
             fclose(fid);
         end
         
         function readJson(obj)
-            if(exist(strcat(Config.root, '\persistentModel.json'), 'file') == 2)
-                persistentModel = loadjson(strcat(Config.root, '\persistentModel.json'));
+            if(exist(strcat(Config.rootPath, '\persistentModel.json'), 'file') == 2)
+                jsonText = fileread('\persistentModel.json');
+                persistentModel = mls.internal.fromJSON(jsonText);
                 obj.id = persistentModel.id; 
-                obj.person = persistentModel.person;
+                obj.person = List();
+                obj.person.fill(persistentModel.person);
             end
         end
     end

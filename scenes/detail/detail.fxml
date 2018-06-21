@@ -47,6 +47,6 @@
             <Label prefWidth="5.0" text=" " />
          </children>
       </HBox>
-      <Button fx:id="btn_save" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#sendEvent" text="save" />
+      <Button fx:id="btn_save" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#notifyListeners" text="save" />
    </children>
 </VBox>

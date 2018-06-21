@@ -12,9 +12,9 @@
       <HBox>
          <children>
             <ChoiceBox fx:id="db_function" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-            <Button fx:id="btn_apply" mnemonicParsing="false" onAction="#sendEvent" text="appy" />
-            <Button fx:id="btn_switchToTable" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#sendEvent" text="switch to table" HBox.hgrow="ALWAYS" />
-            <Button fx:id="btn_switchToList" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#sendEvent" text="switch to list" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btn_apply" mnemonicParsing="false" onAction="#notifyListeners" text="appy" />
+            <Button fx:id="btn_switchToTable" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#notifyListeners" text="switch to table" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btn_switchToList" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#notifyListeners" text="switch to list" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
       <LineChart fx:id="lineChart" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">

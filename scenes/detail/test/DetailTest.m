@@ -15,7 +15,7 @@ classdef DetailTest < matlab.unittest.TestCase
             testCase.model = ModelMock();
             testCase.overviewSceneController = OverviewControllerMock(); 
             testCase.jfxApplicationAdapter = JFXApplicationAdapter();
-            testCase.detailStageController = JFXStageController('Detail', testCase.jfxApplicationAdapter);
+            testCase.detailStageController = JFXStageController(testCase.jfxApplicationAdapter, 'Detail');
             testCase.detailSceneController = DetailController(...
                 fullfile(Config.rootPath, 'scenes', 'detail', 'detail.fxml'),...
                 testCase.model, testCase.overviewSceneController, testCase.person);

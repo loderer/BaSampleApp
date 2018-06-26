@@ -6,6 +6,6 @@ function startup()
     model = Model();
     
     jfxApplicationAdapter = JFXApplicationAdapter();
-    overviewStageController = JFXStageController('Phone book', jfxApplicationAdapter);
+    overviewStageController = JFXStageController(jfxApplicationAdapter, 'Phone book');
     overviewSceneController = OverviewController(strcat(Config.rootPath, '\scenes\overview\overview.fxml'), model);
     overviewStageController.showScene(overviewSceneController);

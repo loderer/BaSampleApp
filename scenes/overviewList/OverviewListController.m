@@ -56,7 +56,7 @@ classdef OverviewListController < JFXSceneController
         end
         
         function btnNewEntryPressed(obj)
-            detailStageController = JFXStageController('Detail', obj.getJfxApp());
+            detailStageController = JFXStageController(obj.getJfxApp(), 'Detail');
             detailSceneController = DetailController(strcat(Config.rootPath, '\scenes\detail\detail.fxml'), obj.model, obj);
             detailStageController.showScene(detailSceneController);
         end
@@ -67,7 +67,7 @@ classdef OverviewListController < JFXSceneController
             if(~isempty(selectedItem))
                 person = mls.internal.fromJSON(selectedItem); 
             
-                detailStageController = JFXStageController('Detail', obj.getJfxApp());
+                detailStageController = JFXStageController(obj.getJfxApp(), 'Detail');
                 detailSceneController = DetailController(strcat(Config.rootPath, '\scenes\detail\detail.fxml'), obj.model, obj, person);
                 detailStageController.showScene(detailSceneController);
             else

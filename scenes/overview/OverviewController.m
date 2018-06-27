@@ -41,7 +41,7 @@ classdef OverviewController < JFXSceneController
             obj.applyTasks();
         end
         
-        function eventConsumed = handleSceneAction(obj, e) 
+        function eventConsumed = handleSceneEvent(obj, e) 
             eventConsumed = 0; 
             if(strcmp(e.fxId, 'btn_newEntry')...
                     && strcmp(e.action, 'ACTION'))

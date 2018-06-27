@@ -12,7 +12,7 @@ classdef DialogController < JFXSceneController
             obj.detailController = detailController;
         end
         
-        function eventConsumed = onSceneAction(obj, e) 
+        function eventConsumed = handleSceneAction(obj, e) 
             eventConsumed = 0; 
             if(strcmp(e.fxId, 'btn_yes')...
                     && strcmp(e.action, 'ACTION'))

@@ -45,7 +45,7 @@ classdef PlotController < JFXSceneController
             obj.applyTask(obj.lineChart.getData(), 'add', obj.actSeries); 
         end
         
-        function eventConsumed = onSceneAction(obj, e) 
+        function eventConsumed = handleSceneAction(obj, e) 
             eventConsumed = 0; 
             if(strcmp(e.fxId, 'btn_switchToTable')...
                     && strcmp(e.action, 'ACTION'))

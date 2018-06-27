@@ -51,7 +51,7 @@ classdef DetailController < JFXSceneController
             obj.applyTask(obj.slider_age, 'setValue', obj.person{1}.age);
         end
         
-        function eventConsumed = onSceneAction(obj, e) 
+        function eventConsumed = handleSceneAction(obj, e) 
             eventConsumed = 0; 
             if(strcmp(e.fxId, 'btn_save')...
                     && strcmp(e.action, 'ACTION'))

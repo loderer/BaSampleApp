@@ -11,11 +11,11 @@
    <children>
       <HBox>
          <children>
-            <Button fx:id="btn_newEntry" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#notifyListeners" text="new entry" HBox.hgrow="ALWAYS" />
-            <Button fx:id="btn_editEntry" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#notifyListeners" text="edit entry" HBox.hgrow="ALWAYS" />
-            <Button fx:id="btn_save" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#notifyListeners" text="save" HBox.hgrow="ALWAYS" />
-            <Button fx:id="btn_switchToTable" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#notifyListeners" text="switch to table" HBox.hgrow="ALWAYS" />
-            <Button fx:id="btn_switchToPlot" mnemonicParsing="false" onAction="#notifyListeners" text="switch to plot" />
+            <Button fx:id="btn_newEntry" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleEvent" text="new entry" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btn_editEntry" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleEvent" text="edit entry" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btn_save" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleEvent" text="save" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btn_switchToTable" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleEvent" text="switch to table" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btn_switchToPlot" mnemonicParsing="false" onAction="#handleEvent" text="switch to plot" />
          </children>
       </HBox>
       <ListView fx:id="list" prefHeight="500.0" prefWidth="500.0" />

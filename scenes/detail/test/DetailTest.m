@@ -27,7 +27,7 @@ classdef DetailTest < matlab.unittest.TestCase
         function closeFigure(testCase)
             allStageControllers = testCase.jfxApplicationAdapter.getAllStageControllers();
             for i = 1 : size(allStageControllers)
-                allStageControllers.get(i).sceneController.forceClose(); 
+                allStageControllers.get(i).getSceneController().forceClose(); 
             end
         end
     end

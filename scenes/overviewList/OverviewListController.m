@@ -56,7 +56,7 @@ classdef OverviewListController < JFXSceneController
         end
         
         function btnNewEntryPressed(obj)
-            detailStageController = JFXStageController(obj.getJfxApp(), 'Detail');
+            detailStageController = JFXStageController(obj.getJfxApplicationAdapter(), 'Detail');
             detailSceneController = DetailController(strcat(Config.rootPath, '\scenes\detail\detail.fxml'), obj.model, obj);
             detailStageController.showScene(detailSceneController);
         end
@@ -67,7 +67,7 @@ classdef OverviewListController < JFXSceneController
             if(~isempty(selectedItem))
                 person = mls.internal.fromJSON(selectedItem); 
             
-                detailStageController = JFXStageController(obj.getJfxApp(), 'Detail');
+                detailStageController = JFXStageController(obj.getJfxApplicationAdapter(), 'Detail');
                 detailSceneController = DetailController(strcat(Config.rootPath, '\scenes\detail\detail.fxml'), obj.model, obj, person);
                 detailStageController.showScene(detailSceneController);
             else
@@ -81,12 +81,12 @@ classdef OverviewListController < JFXSceneController
         
         function btn_switchToTablePressed(obj)
             overviewController = OverviewController(strcat(Config.rootPath, '\scenes\overview\overview.fxml'), obj.model);
-            obj.stageController.showScene(overviewController);
+            obj.getStageController().showScene(overviewController);
         end
         
         function btn_switchToPlotPressed(obj)
             plotController = PlotController(strcat(Config.rootPath, '\scenes\plot\plot.fxml'), obj.model);
-            obj.stageController.showScene(plotController);
+            obj.getStageController().showScene(plotController);
         end
         
         function update(obj, oldItem, newItem) 

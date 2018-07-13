@@ -1,4 +1,4 @@
-classdef DetailController < JFXSceneController
+classdef DetailController < jfx4matlab.matlab.JFXSceneController
     %DetailController An instance of this class observes the gui.
     %   This class maps every event to an appropriate callback.
     
@@ -17,7 +17,7 @@ classdef DetailController < JFXSceneController
     
     methods
         function obj = DetailController(varargin)
-            obj = obj@JFXSceneController(varargin(1, 1));
+            obj = obj@jfx4matlab.matlab.JFXSceneController(varargin(1, 1));
             obj.model = varargin(1, 2); 
             obj.overviewController = varargin(1, 3);
             if(nargin == 4) 
@@ -26,7 +26,9 @@ classdef DetailController < JFXSceneController
                 obj.person = {Person(-1, java.lang.String(''), java.lang.String(''), Gender.female, 16)};
             end
         end
+    end
         
+   methods (Access = {?jfx4matlab.matlab.JFXSceneController}) 
         function initScene(obj)
             % fetch ui elements
             obj.tf_name = obj.getUiElement('tf_name');
@@ -87,8 +89,12 @@ classdef DetailController < JFXSceneController
             obj.overviewController{1}.update(obj.person{1}, newItem);
             obj.person{1} = newItem; 
         end
-        
-        function isCloseable = isCloseable(obj)
+   end
+   
+   methods (Access={?jfx4matlab.matlab.JFXStageController,...
+            ?jfx4matlab.matlab.JFXSceneController,...
+            ?jfx4matlab.matlabTest.JFXSceneControllerTest})
+      function isCloseable = isCloseable(obj)
             % determine gender
             if(obj.rb_female.isSelected())
                gender = Gender.female; 
@@ -106,12 +112,12 @@ classdef DetailController < JFXSceneController
                     || ~strcmp(newItem.gender, obj.person{1}.gender)...
                     || newItem.age ~= obj.person{1}.age)
                 isCloseable = false; 
-                dialogStageController = JFXStageController(obj.getJfxApplicationAdapter(), 'Unsaved changes!', javafx.stage.Modality.WINDOW_MODAL, obj.getStageController());
+                dialogStageController = jfx4matlab.matlab.JFXStageController(obj.getJfxApplicationAdapter(), 'Unsaved changes!', javafx.stage.Modality.WINDOW_MODAL, obj.getStageController());
                 dialogSceneController = DialogController(strcat(Config.rootPath, '\scenes\dialog\dialog.fxml'), obj);
                 dialogStageController.showScene(dialogSceneController);
             else 
                 isCloseable = true;
             end
-        end
+        end 
    end
 end

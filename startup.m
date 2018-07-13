@@ -1,11 +1,14 @@
 function startup()
+    %--------------------------------------------------------------------------    
     % Add required directories to classpath. 
-    addpath(genpath('C:\Users\rudi\Documents\GitHub\BaMatlab\jfx_4_matlab_adapter'));
     addpath(genpath('C:\Users\rudi\Documents\GitHub\BaSampleApp'))
-    
+    % Add MATLAB-library to class path. 
+    addpath('C:\Users\rudi\Documents\GitHub\BaMatlab');
+    import jfx4matlab.matlab.*;
+    %--------------------------------------------------------------------------
     model = Model();
     
-    jfxApplicationAdapter = JFXApplicationAdapter();
-    overviewStageController = JFXStageController(jfxApplicationAdapter, 'Phone book');
+    jfxApplicationAdapter = jfx4matlab.matlab.JFXApplicationAdapter();
+    overviewStageController = jfx4matlab.matlab.JFXStageController(jfxApplicationAdapter, 'Phone book');
     overviewSceneController = OverviewController(strcat(Config.rootPath, '\scenes\overview\overview.fxml'), model);
     overviewStageController.showScene(overviewSceneController);

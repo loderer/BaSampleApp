@@ -1,4 +1,4 @@
-classdef DialogController < JFXSceneController
+classdef DialogController < jfx4matlab.matlab.JFXSceneController
     %DialogController An instance of this class observes the gui.
     %   This class maps every event to an appropriate callback.
     
@@ -8,10 +8,12 @@ classdef DialogController < JFXSceneController
     
     methods
         function obj = DialogController(fxml, detailController)
-            obj = obj@JFXSceneController(fxml);
+            obj = obj@jfx4matlab.matlab.JFXSceneController(fxml);
             obj.detailController = detailController;
         end
-        
+    end
+    
+    methods (Access = {?jfx4matlab.matlab.JFXSceneController})    
         function eventConsumed = handleSceneEvent(obj, e) 
             eventConsumed = 0; 
             if(strcmp(e.fxId, 'btn_yes')...

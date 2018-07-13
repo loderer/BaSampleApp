@@ -1,4 +1,4 @@
-classdef PlotController < JFXSceneController
+classdef PlotController < jfx4matlab.matlab.JFXSceneController
     %PLOTCONTROLLER Summary of this class goes here
     %   Detailed explanation goes here
     
@@ -13,11 +13,13 @@ classdef PlotController < JFXSceneController
     
     methods
         function obj = PlotController(pathToFxml, model) 
-            obj = obj@JFXSceneController(pathToFxml);
+            obj = obj@jfx4matlab.matlab.JFXSceneController(pathToFxml);
             obj.model = model; 
             obj.actSeries = -1;
         end
-        
+    end
+    
+    methods (Access = {?jfx4matlab.matlab.JFXSceneController})
         function initScene(obj)
             % fetch ui elements
             obj.lineChart = obj.getUiElement('lineChart');

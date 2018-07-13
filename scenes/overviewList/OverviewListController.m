@@ -1,4 +1,4 @@
-classdef OverviewListController < JFXSceneController
+classdef OverviewListController < jfx4matlab.matlab.JFXSceneController
     %OverviewListController An instance of this class observes the gui.
     %   This class maps every event to an appropriate callback.
     
@@ -11,16 +11,18 @@ classdef OverviewListController < JFXSceneController
     
     methods
         function obj = OverviewListController(pathToFxml, model) 
-            obj = obj@JFXSceneController(pathToFxml);
+            obj = obj@jfx4matlab.matlab.JFXSceneController(pathToFxml);
             obj.model = model; 
         end
-        
+    end
+       
+    methods (Access = {?jfx4matlab.matlab.JFXSceneController})
         function initScene(obj)
             % fetch ui elements
             obj.list = obj.getUiElement('list');
             
             % fill list
-            obj.pushBackTask(obj.list, 'setCellFactory', jfx_4_matlab.cell_value_factory.JsonListCellValueFactory('surname'));
+            obj.pushBackTask(obj.list, 'setCellFactory', jfx_4_matlab_java.cell_value_factory.JsonListCellValueFactory('surname'));
             data = javafx.collections.FXCollections.observableArrayList();
             for n = 1:size(obj.model.person)
                 data.add(java.lang.String(mls.internal.toJSON(obj.model.person.get(n))));
@@ -56,7 +58,7 @@ classdef OverviewListController < JFXSceneController
         end
         
         function btnNewEntryPressed(obj)
-            detailStageController = JFXStageController(obj.getJfxApplicationAdapter(), 'Detail');
+            detailStageController = jfx4matlab.matlab.JFXStageController(obj.getJfxApplicationAdapter(), 'Detail');
             detailSceneController = DetailController(strcat(Config.rootPath, '\scenes\detail\detail.fxml'), obj.model, obj);
             detailStageController.showScene(detailSceneController);
         end
@@ -67,7 +69,7 @@ classdef OverviewListController < JFXSceneController
             if(~isempty(selectedItem))
                 person = mls.internal.fromJSON(selectedItem); 
             
-                detailStageController = JFXStageController(obj.getJfxApplicationAdapter(), 'Detail');
+                detailStageController = jfx4matlab.matlab.JFXStageController(obj.getJfxApplicationAdapter(), 'Detail');
                 detailSceneController = DetailController(strcat(Config.rootPath, '\scenes\detail\detail.fxml'), obj.model, obj, person);
                 detailStageController.showScene(detailSceneController);
             else

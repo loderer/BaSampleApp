@@ -1,4 +1,4 @@
-classdef OverviewController < JFXSceneController
+classdef OverviewController < jfx4matlab.matlab.JFXSceneController
     %OverviewController An instance of this class observes the gui.
     %   This class maps every event to an appropriate callback.
     
@@ -15,10 +15,12 @@ classdef OverviewController < JFXSceneController
     
     methods
         function obj = OverviewController(pathToFxml, model) 
-            obj = obj@JFXSceneController(pathToFxml);
+            obj = obj@jfx4matlab.matlab.JFXSceneController(pathToFxml);
             obj.model = model; 
         end
+    end
         
+    methods (Access = {?jfx4matlab.matlab.JFXSceneController}) 
         function initScene(obj)
             % fetch ui elements
             obj.tc_name = obj.getUiElement('tc_name');
@@ -28,10 +30,10 @@ classdef OverviewController < JFXSceneController
             obj.table = obj.getUiElement('table');
             
             % Fill table.
-            obj.pushBackTask(obj.tc_name, 'setCellValueFactory', jfx_4_matlab.cell_value_factory.JsonTableCellValueFactory('name')); 
-            obj.pushBackTask(obj.tc_surname, 'setCellValueFactory', jfx_4_matlab.cell_value_factory.JsonTableCellValueFactory('surname')); 
-            obj.pushBackTask(obj.tc_gender, 'setCellValueFactory', jfx_4_matlab.cell_value_factory.JsonTableCellValueFactory('gender'));
-            obj.pushBackTask(obj.tc_age, 'setCellValueFactory', jfx_4_matlab.cell_value_factory.JsonTableCellValueFactory('age'));
+            obj.pushBackTask(obj.tc_name, 'setCellValueFactory', jfx_4_matlab_java.cell_value_factory.JsonTableCellValueFactory('name')); 
+            obj.pushBackTask(obj.tc_surname, 'setCellValueFactory', jfx_4_matlab_java.cell_value_factory.JsonTableCellValueFactory('surname')); 
+            obj.pushBackTask(obj.tc_gender, 'setCellValueFactory', jfx_4_matlab_java.cell_value_factory.JsonTableCellValueFactory('gender'));
+            obj.pushBackTask(obj.tc_age, 'setCellValueFactory', jfx_4_matlab_java.cell_value_factory.JsonTableCellValueFactory('age'));
             data = javafx.collections.FXCollections.observableArrayList();
             for n = 1:obj.model.person.size()
                 data.add(java.lang.String(mls.internal.toJSON(obj.model.person.get(n))));
@@ -67,7 +69,7 @@ classdef OverviewController < JFXSceneController
         end
         
         function btnNewEntryPressed(obj)
-            detailStageController = JFXStageController(obj.getJfxApplicationAdapter(), 'Detail');
+            detailStageController = jfx4matlab.matlab.JFXStageController(obj.getJfxApplicationAdapter(), 'Detail');
             detailSceneController = DetailController(strcat(Config.rootPath, '\scenes\detail\detail.fxml'), obj.model, obj);
             detailStageController.showScene(detailSceneController);
         end
@@ -78,7 +80,7 @@ classdef OverviewController < JFXSceneController
             if(~isempty(selectedItem))
                 person = mls.internal.fromJSON(selectedItem); 
             
-                detailStageController = JFXStageController(obj.getJfxApplicationAdapter(), 'Detail');
+                detailStageController = jfx4matlab.matlab.JFXStageController(obj.getJfxApplicationAdapter(), 'Detail');
                 detailSceneController = DetailController(strcat(Config.rootPath, '\scenes\detail\detail.fxml'), obj.model, obj, person);
                 detailStageController.showScene(detailSceneController);
             else

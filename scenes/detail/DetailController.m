@@ -26,9 +26,7 @@ classdef DetailController < jfx4matlab.matlab.JFXSceneController
                 obj.person = {Person(-1, java.lang.String(''), java.lang.String(''), Gender.female, 16)};
             end
         end
-    end
         
-   methods (Access = {?jfx4matlab.matlab.JFXSceneController}) 
         function initScene(obj)
             % fetch ui elements
             obj.tf_name = obj.getUiElement('tf_name');
@@ -89,12 +87,8 @@ classdef DetailController < jfx4matlab.matlab.JFXSceneController
             obj.overviewController{1}.update(obj.person{1}, newItem);
             obj.person{1} = newItem; 
         end
-   end
-   
-   methods (Access={?jfx4matlab.matlab.JFXStageController,...
-            ?jfx4matlab.matlab.JFXSceneController,...
-            ?jfx4matlab.matlabTest.JFXSceneControllerTest})
-      function isCloseable = isCloseable(obj)
+        
+        function isCloseable = isCloseable(obj)
             % determine gender
             if(obj.rb_female.isSelected())
                gender = Gender.female; 

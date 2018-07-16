@@ -14,9 +14,7 @@ classdef OverviewListController < jfx4matlab.matlab.JFXSceneController
             obj = obj@jfx4matlab.matlab.JFXSceneController(pathToFxml);
             obj.model = model; 
         end
-    end
-       
-    methods (Access = {?jfx4matlab.matlab.JFXSceneController})
+        
         function initScene(obj)
             % fetch ui elements
             obj.list = obj.getUiElement('list');

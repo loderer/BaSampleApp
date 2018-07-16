@@ -14,8 +14,8 @@ classdef DetailTest < matlab.unittest.TestCase
             testCase.person = Person(-1, 'Rudi', 'Loderer', Gender.male, 22); 
             testCase.model = ModelMock();
             testCase.overviewSceneController = OverviewControllerMock(); 
-            testCase.jfxApplicationAdapter = JFXApplicationAdapter();
-            testCase.detailStageController = JFXStageController(testCase.jfxApplicationAdapter, 'Detail');
+            testCase.jfxApplicationAdapter = jfx4matlab.matlab.JFXApplicationAdapter();
+            testCase.detailStageController = jfx4matlab.matlab.JFXStageController(testCase.jfxApplicationAdapter, 'Detail');
             testCase.detailSceneController = DetailController(...
                 fullfile(Config.rootPath, 'scenes', 'detail', 'detail.fxml'),...
                 testCase.model, testCase.overviewSceneController, testCase.person);
@@ -27,7 +27,7 @@ classdef DetailTest < matlab.unittest.TestCase
         function closeFigure(testCase)
             allStageControllers = testCase.jfxApplicationAdapter.getAllStageControllers();
             for i = 1 : size(allStageControllers)
-                allStageControllers.get(i).getSceneController().forceClose(); 
+                allStageControllers{i}.getSceneController().forceClose(); 
             end
         end
     end
@@ -73,7 +73,7 @@ classdef DetailTest < matlab.unittest.TestCase
         function doNotOpenDialogTest(testCase) 
             testCase.detailSceneController.isCloseable();
             dialogStageControllers = testCase.jfxApplicationAdapter.getStageControllerByTitle('Unsaved changes!');
-            testCase.verifyEqual(dialogStageControllers.isEmpty(), true, ...
+            testCase.verifyEqual(size(dialogStageControllers, 1), 0, ...
                 'Unsaved changes dialog should not be visible!');
         end
         
@@ -89,7 +89,7 @@ classdef DetailTest < matlab.unittest.TestCase
             testCase.detailSceneController.isCloseable();  
             dialogStageControllers = ...
                 testCase.jfxApplicationAdapter.getStageControllerByTitle('Unsaved changes!');
-            testCase.verifyEqual(dialogStageControllers.isEmpty(), false, ...
+            testCase.verifyEqual(size(dialogStageControllers, 1), 1, ...
                 'Unsaved changes dialog should be visible!'); 
         end
  

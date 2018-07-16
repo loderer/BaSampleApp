@@ -17,9 +17,7 @@ classdef PlotController < jfx4matlab.matlab.JFXSceneController
             obj.model = model; 
             obj.actSeries = -1;
         end
-    end
-    
-    methods (Access = {?jfx4matlab.matlab.JFXSceneController})
+        
         function initScene(obj)
             % fetch ui elements
             obj.lineChart = obj.getUiElement('lineChart');

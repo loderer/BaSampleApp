@@ -11,10 +11,8 @@ classdef DialogController < jfx4matlab.matlab.JFXSceneController
             obj = obj@jfx4matlab.matlab.JFXSceneController(fxml);
             obj.detailController = detailController;
         end
-    end
-    
-    methods (Access = {?jfx4matlab.matlab.JFXSceneController})    
-        function eventConsumed = handleSceneEvent(obj, e) 
+        
+        function eventConsumed = handleSceneEvent(obj, e)
             eventConsumed = 0; 
             if(strcmp(e.fxId, 'btn_yes')...
                     && strcmp(e.action, 'ACTION'))

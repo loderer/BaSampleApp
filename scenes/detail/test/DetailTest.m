@@ -4,7 +4,7 @@ classdef DetailTest < matlab.unittest.TestCase
         person; 
         model;
         overviewSceneController; 
-        jfxApplicationAdapter;
+        jfxApplication;
         detailStageController;
         detailSceneController;
     end
@@ -14,8 +14,8 @@ classdef DetailTest < matlab.unittest.TestCase
             testCase.person = Person(-1, 'Rudi', 'Loderer', Gender.male, 22); 
             testCase.model = ModelMock();
             testCase.overviewSceneController = OverviewControllerMock(); 
-            testCase.jfxApplicationAdapter = jfx4matlab.matlab.JFXApplicationAdapter();
-            testCase.detailStageController = jfx4matlab.matlab.JFXStageController(testCase.jfxApplicationAdapter, 'Detail');
+            testCase.jfxApplication = jfx4matlab.matlab.JFXApplication();
+            testCase.detailStageController = jfx4matlab.matlab.JFXStageController(testCase.jfxApplication, 'Detail');
             testCase.detailSceneController = DetailController(...
                 fullfile(Config.rootPath, 'scenes', 'detail', 'detail.fxml'),...
                 testCase.model, testCase.overviewSceneController, testCase.person);
@@ -25,7 +25,7 @@ classdef DetailTest < matlab.unittest.TestCase
  
     methods(TestMethodTeardown)
         function closeFigure(testCase)
-            allStageControllers = testCase.jfxApplicationAdapter.getAllStageControllers();
+            allStageControllers = testCase.jfxApplication.getAllStageControllers();
             for i = 1 : size(allStageControllers)
                 allStageControllers{i}.getSceneController().forceClose(); 
             end
@@ -72,7 +72,7 @@ classdef DetailTest < matlab.unittest.TestCase
         
         function doNotOpenDialogTest(testCase) 
             testCase.detailSceneController.isCloseable();
-            dialogStageControllers = testCase.jfxApplicationAdapter.getStageControllerByTitle('Unsaved changes!');
+            dialogStageControllers = testCase.jfxApplication.getStageControllerByTitle('Unsaved changes!');
             testCase.verifyEqual(size(dialogStageControllers, 1), 0, ...
                 'Unsaved changes dialog should not be visible!');
         end
@@ -88,7 +88,7 @@ classdef DetailTest < matlab.unittest.TestCase
             testCase.detailSceneController.tf_name.setText('anotherName')
             testCase.detailSceneController.isCloseable();  
             dialogStageControllers = ...
-                testCase.jfxApplicationAdapter.getStageControllerByTitle('Unsaved changes!');
+                testCase.jfxApplication.getStageControllerByTitle('Unsaved changes!');
             testCase.verifyEqual(size(dialogStageControllers, 1), 1, ...
                 'Unsaved changes dialog should be visible!'); 
         end

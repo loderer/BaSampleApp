@@ -8,8 +8,8 @@ function startup()
     %--------------------------------------------------------------------------
     model = Model();
     
-    jfxApplicationAdapter = jfx4matlab.matlab.JFXApplicationAdapter();
-    overviewStageController = jfx4matlab.matlab.JFXStageController(jfxApplicationAdapter, 'Phone book');
+    jfxApplication = jfx4matlab.matlab.JFXApplication();
+    overviewStageController = jfx4matlab.matlab.JFXStageController(jfxApplication, 'Phone book');
     overviewStageController.setIcon('C:\Users\rudi\Documents\GitHub\BaSampleApp\resources\sampleIcon.png');
     
     overviewSceneController = OverviewController(strcat(Config.rootPath, '\scenes\overview\overview.fxml'), model);

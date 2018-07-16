@@ -57,7 +57,7 @@ classdef OverviewListController < jfx4matlab.matlab.JFXSceneController
         end
         
         function btnNewEntryPressed(obj)
-            detailStageController = jfx4matlab.matlab.JFXStageController(obj.getJfxApplicationAdapter(), 'Detail');
+            detailStageController = jfx4matlab.matlab.JFXStageController(obj.getJfxApplication(), 'Detail');
             detailSceneController = DetailController(strcat(Config.rootPath, '\scenes\detail\detail.fxml'), obj.model, obj);
             detailStageController.showScene(detailSceneController);
         end
@@ -68,7 +68,7 @@ classdef OverviewListController < jfx4matlab.matlab.JFXSceneController
             if(~isempty(selectedItem))
                 person = mls.internal.fromJSON(selectedItem); 
             
-                detailStageController = jfx4matlab.matlab.JFXStageController(obj.getJfxApplicationAdapter(), 'Detail');
+                detailStageController = jfx4matlab.matlab.JFXStageController(obj.getJfxApplication(), 'Detail');
                 detailSceneController = DetailController(strcat(Config.rootPath, '\scenes\detail\detail.fxml'), obj.model, obj, person);
                 detailStageController.showScene(detailSceneController);
             else

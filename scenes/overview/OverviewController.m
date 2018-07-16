@@ -28,10 +28,10 @@ classdef OverviewController < jfx4matlab.matlab.JFXSceneController
             obj.table = obj.getUiElement('table');
             
             % Fill table.
-            obj.pushBackTask(obj.tc_name, 'setCellValueFactory', jfx_4_matlab_java.cell_value_factory.JsonTableCellValueFactory('name')); 
-            obj.pushBackTask(obj.tc_surname, 'setCellValueFactory', jfx_4_matlab_java.cell_value_factory.JsonTableCellValueFactory('surname')); 
-            obj.pushBackTask(obj.tc_gender, 'setCellValueFactory', jfx_4_matlab_java.cell_value_factory.JsonTableCellValueFactory('gender'));
-            obj.pushBackTask(obj.tc_age, 'setCellValueFactory', jfx_4_matlab_java.cell_value_factory.JsonTableCellValueFactory('age'));
+            obj.pushBackTask(obj.tc_name, 'setCellValueFactory', generic_jfx_application.cell_value_factory.JsonTableCellValueFactory('name')); 
+            obj.pushBackTask(obj.tc_surname, 'setCellValueFactory', generic_jfx_application.cell_value_factory.JsonTableCellValueFactory('surname')); 
+            obj.pushBackTask(obj.tc_gender, 'setCellValueFactory', generic_jfx_application.cell_value_factory.JsonTableCellValueFactory('gender'));
+            obj.pushBackTask(obj.tc_age, 'setCellValueFactory', generic_jfx_application.cell_value_factory.JsonTableCellValueFactory('age'));
             data = javafx.collections.FXCollections.observableArrayList();
             for n = 1:obj.model.person.size()
                 data.add(java.lang.String(mls.internal.toJSON(obj.model.person.get(n))));

@@ -11,6 +11,7 @@ classdef OverviewListController < jfx4matlab.matlab.JFXSceneController
     
     methods
         function obj = OverviewListController(pathToFxml, model) 
+            
             obj = obj@jfx4matlab.matlab.JFXSceneController(pathToFxml);
             obj.model = model; 
         end
@@ -20,7 +21,7 @@ classdef OverviewListController < jfx4matlab.matlab.JFXSceneController
             obj.list = obj.getUiElement('list');
             
             % fill list
-            obj.pushBackTask(obj.list, 'setCellFactory', jfx_4_matlab_java.cell_value_factory.JsonListCellValueFactory('surname'));
+            obj.pushBackTask(obj.list, 'setCellFactory', generic_jfx_application.cell_value_factory.JsonListCellValueFactory('surname'));
             data = javafx.collections.FXCollections.observableArrayList();
             for n = 1:size(obj.model.person)
                 data.add(java.lang.String(mls.internal.toJSON(obj.model.person.get(n))));
